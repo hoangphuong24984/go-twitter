@@ -220,7 +220,7 @@ func (s *StatusService) Retweeters(id int64, params *StatusRetweetParams) (*Foll
 	ids := new(FollowerIDs)
 	apiError := new(APIError)
 	path := fmt.Sprintf("retweeters/%d.json", params.ID)
-	resp, err := s.sling.New().Post(path).BodyForm(params).Receive(tweet, apiError)
+	resp, err := s.sling.New().Post(path).BodyForm(params).Receive(ids, apiError)
 	return ids, resp, relevantError(err, *apiError)
 }
 
